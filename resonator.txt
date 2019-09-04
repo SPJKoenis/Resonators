@@ -1,0 +1,112 @@
+class Resonator:
+    
+    def __init__(self, x1, y1, x2, frequency, layer, d = 10, d1 = 22, d2 = 66, l_vert = 80, l_coupl = 120, number = 0):
+        self.x1 = x1
+        self.y1 = y1
+        self.x2 = x2
+        self.frequency = frequency
+        self.length = 299792458/(4*frequency)*1e6
+        self.d = d
+        self.d1 = d1
+        self.d2 = d2
+        self.l_vert = l_vert
+        self.l_coupl = l_coupl
+        self.cell = gdspy.Cell('res' + str(number))
+        self.layer = layer
+        
+    def Waveguide(self, x1, y1, x2, length, d_given):#, x_e, y_e):
+        delta = (d_given - self.d)/2
+        #x1 += delta
+        #y1 -= delta
+        #x2 -= delta
+        #y2 += delta
+        #x_f -=delta 
+        #y_f += delta
+        r_outer = self.d*3.5  #1.5
+        r_inner = self.d*2.5  #0.5
+        r = 0.5*(r_outer + r_inner)
+        width = x2 - x1 - r_outer*2
+        l_reserved = self.l_vert + self.l_coupl + 0.5*np.pi*r + np.pi*r
+        N = floor((self.length - l_reserved)/(np.pi*r + width))
+        l_horiz = self.length - l_reserved - (np.pi*r + width)*N
+        if l_horiz > width:
+            self.l_vert += l_horiz - 0.8*width
+            l_horiz = 0.8*width
+        #cell.add(gdspy.Rectangle((x_f, y_f), (x_f + d, y_f - l_vert)))
+        #cell.add(gdspy.Round((x_f + r_outer, y_f - l_vert), r_outer, r_inner, 
+                      #initial_angle=np.pi,
+                      #final_angle=1.5*np.pi,
+                      #tolerance=0.01))
+        rect = gdspy.Rectangle((x1 + r_outer, y1 - delta), (x1 + r_outer + self.l_coupl + delta, y1 + self.d + delta))
+        sector = gdspy.Round((x1 + r_outer, y1 + r_outer), r_outer + delta, r_inner - delta, 
+                      initial_angle=0.5*np.pi,
+                      final_angle=1.5*np.pi,
+                      tolerance=0.01)
+        #result = gdspy.PolygonSet([rect.polygons, sector.polygons])
+        result = gdspy.boolean(rect, sector, 'or')
+        for i in range(N):
+            rect = gdspy.Rectangle((x1 + r_outer, y1 + (r_outer + r_inner)*(i+1) - delta), 
+                                   (x1 + r_outer + width, y1 + (r_outer + r_inner)*(i+1) + self.d + delta))
+            xr = x1 + r_outer + width if i%2 == 0 else x1 + r_outer
+            yr = y1 + r_outer*2 + (2*r_inner + self.d)*i + r_inner
+            sector = gdspy.Round((xr, yr), r_outer + delta, r_inner - delta, 
+                      initial_angle=1.5*np.pi if i%2 == 0 else 0.5*np.pi,
+                      final_angle=2.5*np.pi if i%2 == 0 else 1.5*np.pi,
+                      tolerance=0.01)
+            result = gdspy.boolean(result, gdspy.boolean(sector, rect, 'or'), 'or')
+        i = N-1
+        xr1 = x1 + r_outer if i%2 == 1 else x2 - r_outer
+        xr2 = x1 + r_outer + l_horiz if i%2 == 1 else x2 - r_outer - l_horiz
+        rect = gdspy.Rectangle((xr1, y1 + (r_outer + r_inner)*(N+1) - delta), 
+                               (xr2, y1 + (r_outer + r_inner)*(N+1) + self.d + delta))
+        xr = x1 + r_outer + l_horiz if i%2 == 1 else x2 - r_outer - l_horiz
+        yr = y1 + r_outer*2 + (2*r_inner + self.d)*N + r_inner
+        sector = gdspy.Round((xr, yr), r_outer + delta, r_inner - delta, 
+                      initial_angle=1.5*np.pi if i%2 == 1 else np.pi,
+                      final_angle=2*np.pi if i%2 == 1 else 1.5*np.pi,
+                      tolerance=0.01)
+        result = gdspy.boolean(result, gdspy.boolean(sector, rect, 'or'), 'or')
+        xr1 = xr + r_inner - delta if i%2 == 1 else xr - r_inner + delta
+        xr2 = xr + r_outer + delta if i%2 == 1 else xr - r_outer - delta 
+        rect = gdspy.Rectangle((xr1, yr), (xr2, yr + self.l_vert))
+        result = gdspy.boolean(result, rect, 'or')
+        return result, (xr2 - xr1)*0.5 + xr1, yr + self.l_vert
+
+    def Qubit_Outer_Cross(self, x1, y1, width, height, thikness, gap):
+        return gdspy.boolean(self.Qubit_Inner_Cross(x1, y1 + height/2 + gap, width, height, thikness, 2*gap),
+                             self.Qubit_Inner_Cross(x1, y1 + height/2 + gap, width, height, thikness, gap), 'not')
+
+    def Qubit_Inner_Cross(self, x1, y1, width, height, thikness, gap):
+        return gdspy.boolean(gdspy.Rectangle((x1 - gap, y1 - height*0.75 - gap), (x1 + thikness + gap, y1 + height*0.25 + gap)), 
+                             gdspy.Rectangle((x1 - width/2 + thikness/2 - gap, y1 - gap), 
+                                             (x1 + width/2 + thikness/2 + gap, y1 + thikness + gap)), 'or'), 
+
+    def Claw(self, xc, yc, w = 104, d1 = 7, h = 107, d2 = 20, gap = 4):
+        #yc += 4*gap
+        print(xc, yc)
+        r1 = gdspy.boolean(gdspy.boolean(gdspy.Rectangle((xc - w/2 - gap, yc), (xc + w/2 + gap, yc + d1 + 2*gap)),
+                             gdspy.Rectangle((xc - w/2 - gap, yc), (xc - w/2 + d2 + gap, yc + h + 2*gap)), 'or'), 
+                             gdspy.Rectangle((xc + w/2 - d2 - gap, yc), (xc + w/2 + gap, yc + h + 2*gap)), 'or')
+        r2 = gdspy.boolean(gdspy.boolean(gdspy.Rectangle((xc - w/2, yc + gap), (xc + w/2, yc + d1 + gap)),
+                             gdspy.Rectangle((xc - w/2, yc + gap), (xc - w/2 + d2, yc + h + gap)), 'or'), 
+                             gdspy.Rectangle((xc + w/2 - d2, yc + gap), (xc + w/2, yc + h + gap)), 'or')
+        r3 = gdspy.boolean(gdspy.Rectangle((xc - w/2 - 4*gap, yc - 4*gap), (xc + w/2 + 4*gap, yc + h + 4*gap)), 
+                           self.Qubit_Outer_Cross(xc - w/2 + d2 + 2*gap + 16, yc + d1 + 3*gap + 16 + 0.25*h, 414, 176, 16, 16), 'or')
+        return gdspy.boolean(gdspy.boolean(gdspy.boolean(gdspy.boolean(r3, r1, 'not'), 
+                             gdspy.Rectangle((xc - w/2 + d2 + 2*gap, yc + d1 + 3*gap), (xc + w/2 - d2 - 2*gap, yc + h + 4*gap)), 'not'),
+                             r2, 'or'), self.Qubit_Inner_Cross(xc - w/2 + d2 + 2*gap + 16, yc + d1 + 3*gap + 176/2 + 32 + 0.25*h, 414, 176, 16, 0), 'or')
+
+
+	def Generate(self, mode = True):
+		xres = self.x1 + 0.5*self.d2
+		yres = self.y1 + 0.5*self.d2
+		x2res = self.x2 - 0.5*self.d2
+		r1, xr1, yr1 = self.Waveguide(xres, yres, x2res, self.length, self.d)
+		r2, xr2, yr2 = self.Waveguide(xres, yres, x2res, self.length, self.d1)
+		r3, xr3, yr3 = self.Waveguide(xres, yres, x2res, self.length, self.d2)
+		claw = self.Claw(xr3, yr3)
+        #cell.add(claw)
+		if mode: 
+			return gdspy.boolean((gdspy.boolean(gdspy.boolean(r3, claw, 'or'), r2, 'not', layer = self.layer)), r1, 'or')
+        #print(gdspy.boolean(gdspy.boolean(r3, claw, 'or'), r2, 'not', layer = self.layer))
+        #resonator2.scale(1.1)
