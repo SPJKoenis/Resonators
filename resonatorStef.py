@@ -17,7 +17,7 @@ class Resonator:
 		self.d1 = w+s+s
 		self.d2 = d2
 		self.l_vert = l_vert
-		self.l_coupl = l_coupl
+		self.l_coupl = self.length/36
 		#self.cell = gdspy.Cell('res' + str(number))
 		self.layer = layer
 		self.claw_center = coordinates(0,0)
@@ -29,16 +29,17 @@ class Resonator:
 
 	def Waveguide(self, x1, y1, x2, length, d_given):#, x_e, y_e):
 		delta = (d_given - self.d)/2
-		r_outer = self.d*4.5  #1.5
-		r_inner = self.d*3.5  #0.5
+		r_outer = self.d*3.5  #1.5
+		r_inner = self.d*2.5  #0.5
 		r = 0.5*(r_outer + r_inner)
-		width = x2 - x1 - r_outer*2
-		l_reserved = self.l_vert + self.l_coupl + 0.5*np.pi*r + np.pi*r
-		N = floor((self.length - l_reserved)/(np.pi*r + width)) #number of curves
-		l_horiz = self.length - l_reserved - (np.pi*r + width)*N
-		if l_horiz > width:
-			self.l_vert += l_horiz - 0.8*width
-			l_horiz = 0.8*width
+		#width = x2 - x1 - r_outer*2
+		width = (self.l_coupl*(self.d1)/20) - r_outer*2
+		l_reserved = self.l_vert + self.l_coupl + 0.5*np.pi*r + np.pi*r #0.5 pi for the quarter circle to the vertical piece
+		N = ceil((self.length - l_reserved)/(np.pi*r + width)) #number of curves
+		l_horiz = self.length - l_reserved - (np.pi*r + width)*(N-1)
+		#if l_horiz > width:
+		#	self.l_vert += l_horiz - 0.8*width
+		#	l_horiz = 0.8*width
 		rect = gdspy.Rectangle((x1 + r_outer, y1 - delta), (x1 + r_outer + self.l_coupl + delta, y1 + self.d + delta))
 		sector = gdspy.Round((x1 + r_outer, y1 + r_outer), r_outer + delta, r_inner - delta, initial_angle=0.5*np.pi, final_angle=1.5*np.pi, tolerance=0.01)
 		result = gdspy.boolean(rect, sector, 'or')
