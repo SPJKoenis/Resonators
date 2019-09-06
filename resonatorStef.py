@@ -16,7 +16,7 @@ class Resonator:
 		self.d1 = w+(2*s)
 		self.d2 = 2*self.d1
 		self.l_vert = l_vert
-		self.l_coupl = self.length/36
+		self.l_coupl = self.length/18
 		#self.cell = gdspy.Cell('res' + str(number))
 		self.layer = layer
 		print('coupling length:', self.l_coupl)
