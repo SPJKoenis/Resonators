@@ -25,7 +25,7 @@ class Resonator:
 		print('w/s=', self.d/((self.d1-self.d)/2))
 		print('w+2s=', self.d1)
 		self.r_outer = (self.d1*3-self.d)/2 +self.d  
-		self.width = (self.l_coupl*self.d1/18) - self.r_outer*2 #we let the width depend on the total w+2s value
+		self.width = (self.l_coupl*self.d1/34) - self.r_outer*2 #we let the width depend on the total w+2s value
 		print('x coordinate of end of resonator', x1+2*self.r_outer+self.width)
 
 	def Waveguide(self, x1, y1, length, d_given):#, x_e, y_e):
