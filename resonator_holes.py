@@ -6,17 +6,18 @@ from design import*
 
 class Resonator:
     
-	def __init__(self, x1, y1, frequency, layer, w, s, hd, hdensity, l_vert = 0, l_coupl = 300, number = 0):
+	def __init__(self, x1, y1, frequency, layer, w, s, hd, hdensity, TL, l_vert = 0, l_coupl = 300, number = 0):
         #w and s are the characteristic widths of the resonator cavity.
-		self.x1 = x1
-		self.y1 = y1
+
 		self.frequency = frequency
-		self.length = 299792458/(4*frequency)*1e6
+		self.length = 299792458/(4*frequency)*1e6/2.5249 #the speed of light is modified in the CPW
 		self.d = w
 		self.d1 = w+(2*s)
 		self.d2 = 2*self.d1
+		self.x1 = x1
+		self.y1 = y1
 		self.l_vert = l_vert
-		self.l_coupl = self.length/20
+		self.l_coupl = self.length/10
 		#self.cell = gdspy.Cell('res' + str(number))
 		self.layer = layer
 		print('coupling length:', self.l_coupl)
@@ -24,16 +25,17 @@ class Resonator:
 		print('s=', (self.d1-self.d)/2)
 		print('w/s=', self.d/((self.d1-self.d)/2))
 		print('w+2s=', self.d1)
-		self.r_outer = (self.d1*3-self.d)/2 +self.d  
-		self.width = 0.5*self.l_coupl +0.5*(self.l_coupl*self.d1/20) - self.r_outer*2 #we let the width depend on the total w+2s value
+		self.r_outer = (self.d1*4-self.d)/2 +self.d  
+		self.width = 1*self.l_coupl #we let the width depend on the total w+2s value
 		print('x coordinate of end of resonator', x1+2*self.r_outer+self.width)
 		self.hd = hd
 		self.hdensity = hdensity
+		self.TL_ground = TL
 
 	def Waveguide(self, x1, y1, length, d_given):#, x_e, y_e):
 		delta = (d_given - self.d)/2
 		r_outer = self.r_outer 
-		r_inner = (self.d1*3-self.d)/2  #Difference between the two should be self.d
+		r_inner = (self.d1*4-self.d)/2  #Difference between the two should be self.d
 		r = 0.5*(r_outer + r_inner)
 		width = self.width
 		l_reserved = self.l_vert + self.l_coupl + 0.5*np.pi*r + np.pi*r #0.5 pi for the quarter circle to the vertical piece
@@ -76,10 +78,11 @@ class Resonator:
 		hr = self.hd/2 #the hole radius is half the hole diameter
 		hdensity = self.hdensity
 		nholes = floor(self.width/h_sep) #number of holes per horizontal element
+		print(nholes)
         
 		delta = (d_given - self.d)/2
 		r_outer = self.r_outer 
-		r_inner = (self.d1*3-self.d)/2  #Difference between the two should be self.d
+		r_inner = (self.d1*4-self.d)/2  #Difference between the two should be self.d
 		r = 0.5*(r_outer + r_inner)
 		width = self.width
 		l_reserved = self.l_vert + self.l_coupl + 0.5*np.pi*r + np.pi*r #0.5 pi for the quarter circle to the vertical piece
@@ -126,7 +129,10 @@ class Resonator:
 
 	def Generate(self, mode = 'up', r = 0, w = 0):
 		xres = self.x1 + 0.5*self.d2
-		yres = self.y1 + 0.5*self.d2 - 0.5*self.d if mode == 'up' else self.y1 - 0.5*self.d2 + 0.5*self.d
+		if (self.d2-self.d1)/2 <= self.TL_ground:
+			yres = self.y1 + 0.5*self.d2 - 0.5*self.d -(self.d2-self.d1)/2 if mode == 'up' else self.y1 - 0.5*self.d2 + 0.5*self.d + (self.d2-self.d1)/2
+		else:
+			yres = self.y1 + 0.5*self.d2 - 0.5*self.d -self.TL_ground if mode == 'up' else self.y1 - 0.5*self.d2 + 0.5*self.d + self.TL_ground
 		#print(yres)
 		x2res = self.x1+self.width+1*self.r_outer - 0.5*self.d2
 		if self.hdensity != 0:
