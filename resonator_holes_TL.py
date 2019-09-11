@@ -31,7 +31,7 @@ class Resonator:
 		self.hd = hd
 		self.hdensity = hdensity
 		self.TL_ground = TL
-		self.DE = 5 #this is the width of the conductor that separates the resonator and the TL
+		self.DE = 4 + self.d1/5 #this is the width of the conductor that separates the resonator and the TL
 
 	def Waveguide(self, x1, y1, length, d_given):#, x_e, y_e):
 		delta = (d_given - self.d)/2
