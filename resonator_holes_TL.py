@@ -6,7 +6,7 @@ from designTL import*
 
 class Resonator:
     
-	def __init__(self, x1, y1, frequency, layer, w, s, hd, hdensity, TL, l_vert = 0, l_coupl = 300):
+	def __init__(self, x1, y1, frequency, w, s, hd, hdensity, TL, DE, l_vert = 0):
         #w and s are the characteristic widths of the resonator cavity.
 
 		self.frequency = frequency
@@ -17,21 +17,21 @@ class Resonator:
 		self.x1 = x1
 		self.y1 = y1
 		self.l_vert = l_vert
-		self.l_coupl = self.length/10 #the ratio between the coupling length and the total resonator length is constant
-		self.layer = layer
+		self.l_coupl = self.length/30 #the ratio between the coupling length and the total resonator length is constant
 		print('coupling length:', self.l_coupl)
 		print('w=', self.d)
 		print('s=', (self.d1-self.d)/2)
 		print('w/s=', self.d/((self.d1-self.d)/2))
 		print('w+2s=', self.d1)
 		self.r_outer = (self.d1*4-self.d)/2 +self.d  
-		self.width = self.l_coupl 
+		self.width = 10 #self.l_coupl 
 		print('x coordinate of end of resonator', self.x1 + 2*self.r_outer + self.width +(self.d2-self.d))
-		print('...') 
 		self.hd = hd
 		self.hdensity = hdensity
 		self.TL_ground = TL
-		self.DE = 4 + self.d1/5 #this is the width of the conductor that separates the resonator and the TL
+		self.DE = DE # 5 + self.d1/4 +w/s*0.7 #this is the width of the conductor that separates the resonator and the TL
+		print('DE=', self.DE) 
+		print('...') 
 
 	def Waveguide(self, x1, y1, length, d_given):#, x_e, y_e):
 		delta = (d_given - self.d)/2
@@ -57,7 +57,7 @@ class Resonator:
 			result = gdspy.boolean(result, gdspy.boolean(sector, rect, 'or'), 'or')
 		i = N-1
 		xr1 = x1 + r_outer if i%2 == 1 else x1 + width + r_outer
-		xr2 = x1 + r_outer + l_horiz if i%2 == 1 else x1 + r_outer + width - l_horiz
+		xr2 = x1 + r_outer + l_horiz if i%2 == 1 else x1 + width + r_outer - l_horiz
 		rect = gdspy.Rectangle((xr1, y1 + (r_outer + r_inner)*(N+1) - delta), 
 								(xr2, y1 + (r_outer + r_inner)*(N+1) + self.d + delta))
 		xr = xr2

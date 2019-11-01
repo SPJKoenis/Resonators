@@ -98,8 +98,9 @@ class Pads:
 		self.restricted_area = []
         
 	def Contact_Pad(self, x, y, d, d1, d2):
-		r1 = gdspy.Polygon([(x, y), (x + d2, y), (x + d2 + 220, y - 160), (x + d2 + 220, y - 700), 
-							(x - 220, y - 700), (x - 220, y - 160)])
+#		d2 = 100
+		r1 = gdspy.Polygon([(x, y), (x + d2, y), (x + d2 + 320, y - 60), (x + d2 + 320, y - 700), 
+							(x - 320, y - 700), (x - 320, y - 60)])
 		self.restricted_area.append(r1)
 		delta = 0.5*(d2 - d1)
 		r2 = gdspy.Polygon([(x + delta, y), (x + d1 + delta, y), (x + d1 + delta + 220, y - 160), 
