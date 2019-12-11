@@ -52,7 +52,7 @@ class Resonator:
 			N = N + 1
 			width = (self.length - l_reserved - N*np.pi*r)/N
 		self.widthP = width #we give the top resonator the same width as the bottom one to save space
-		height = (r_outer + r_inner)*N*5
+		height = (r_outer + r_inner)*N*1
 		l_reservedv = height + self.TL_ground - self.DE + 100 + np.pi*r +0.25*np.pi*r #0.25 pi for 
 		Nv = floor((self.l_vert - l_reservedv)/(height + np.pi*r)) #the number of curves for the open end section
 		v_left = self.l_vert - l_reservedv - Nv*(height + np.pi*r)
