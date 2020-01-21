@@ -24,7 +24,7 @@ class JJ:
 									#dspy.Rectangle((x + 2 - self.a, y + 5), (x + 2, y + 5 + self.b)), 'or'),
 									#gdspy.Rectangle((x + 6 + self.c, y + 5), (x + 6, y + 5 + self.d)), 'or')
 		height = self.h1 + self.h2 + self.sep
-		upper_part = gdspy.boolean(gdspy.Rectangle((x - self.w1/2, y + height), (x - self.w1/2 + 4, y + height +3)),gdspy.Rectangle((x + self.w1/2-4, y + height), (x + self.w1/2, y + height + 3)), 'or')
+		upper_part = gdspy.boolean(gdspy.Rectangle((x - self.w1/2-0.1, y + height), (x - self.w1/2 + 4.1, y + height +3)),gdspy.Rectangle((x + self.w1/2-4.1, y + height), (x + self.w1/2+0.1, y + height + 3)), 'or')
 		upper_part = gdspy.boolean(upper_part, gdspy.boolean(gdspy.Rectangle((x - self.w1/2, y + height - 4), (x - self.w1/2 + 1, y + height)),gdspy.Rectangle((x + self.w1/2-1, y + height - 4.5), (x + self.w1/2, y + height)), 'or'), 'or')
 		upper_part = gdspy.boolean(upper_part, gdspy.boolean(gdspy.Rectangle((x - self.w1/2, y + height - 4), (x + self.w1/2, y + height - 4.5)),
 									gdspy.boolean(gdspy.Rectangle((x - self.w1/2, y + height - 1), (x - self.w1/2 + 1, y + self.h1 + self.sep)),

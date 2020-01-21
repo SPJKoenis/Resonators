@@ -2,25 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5401a7c4-564e-4eff-b3e2-599b87cbc8f6" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/airbridges.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/coaxmons.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/design_coaxmons.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/loops_and_JJs_coaxmons.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resonator_coaxmon.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resonators3_3.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Resonator_Purcell.gds" afterPath="$PROJECT_DIR$/Resonator_Purcell.gds" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resonators3_1_new.gds" afterPath="$PROJECT_DIR$/resonators3_1_new.gds" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Measurements.ipynb" afterPath="$PROJECT_DIR$/Measurements.ipynb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Resonators_3_1.ipynb" afterPath="$PROJECT_DIR$/Resonators_3_1.ipynb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Resonators_3_2.ipynb" afterPath="$PROJECT_DIR$/Resonators_3_2.ipynb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Resonators_3_3.ipynb" afterPath="$PROJECT_DIR$/Resonators_3_3.ipynb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Resonators_Purcell.ipynb" afterPath="$PROJECT_DIR$/Resonators_Purcell.ipynb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Resonators_Purcell.py" afterPath="$PROJECT_DIR$/Resonators_Purcell.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Two Circular Qubits.ipynb" afterPath="$PROJECT_DIR$/Two Circular Qubits.ipynb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/design.py" afterPath="$PROJECT_DIR$/design.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/design_res3.py" afterPath="$PROJECT_DIR$/design_res3.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resonators3_2.py" afterPath="$PROJECT_DIR$/resonators3_2.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Coaxmon_chip.ipynb" afterPath="$PROJECT_DIR$/Coaxmon_chip.ipynb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Coaxmon_coupler_optimise.ipynb" afterPath="$PROJECT_DIR$/Coaxmon_coupler_optimise.ipynb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loops_and_JJs_coaxmons.py" afterPath="$PROJECT_DIR$/loops_and_JJs_coaxmons.py" />
     </list>
     <ignored path="scripts.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -53,13 +37,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="designTL.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/designTL.py">
+      <file leaf-file-name="coaxmons.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/coaxmons.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <caret line="22" column="45" selection-start-line="22" selection-start-column="45" selection-end-line="22" selection-end-column="45" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
+                <marker date="1576058287838" expanded="true" signature="78:1569" placeholder="..." />
+                <marker date="1576058287838" expanded="true" signature="145:355" placeholder="..." />
+                <marker date="1576058287838" expanded="true" signature="398:1569" placeholder="..." />
+                <marker date="1576058287838" expanded="true" signature="1588:2789" placeholder="..." />
+                <marker date="1576058287838" expanded="true" signature="1648:1795" placeholder="..." />
+                <marker date="1576058287838" expanded="true" signature="1862:2434" placeholder="..." />
+                <marker date="1576058287838" expanded="true" signature="2499:2789" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -68,32 +59,8 @@
       <file leaf-file-name="loops_and_JJs_coaxmons.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/loops_and_JJs_coaxmons.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.79434854">
-              <caret line="70" column="120" selection-start-line="70" selection-start-column="120" selection-end-line="70" selection-end-column="120" />
-              <folding>
-                <element signature="e#0#12#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="resonator_coaxmon.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resonator_coaxmon.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="12" column="37" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
-              <folding>
-                <element signature="e#0#12#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="coaxmons.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/coaxmons.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="23" column="45" selection-start-line="23" selection-start-column="45" selection-end-line="23" selection-end-column="45" />
+            <state vertical-scroll-proportion="0.4489796">
+              <caret line="26" column="156" selection-start-line="26" selection-start-column="156" selection-end-line="26" selection-end-column="156" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
               </folding>
@@ -159,6 +126,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -180,7 +148,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -375,6 +342,63 @@
     <entry file="file://$PROJECT_DIR$/design_coaxmons.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
+          <caret line="232" column="0" selection-start-line="232" selection-start-column="0" selection-end-line="232" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/designTL.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loops_and_JJs_coaxmons.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resonator_coaxmon.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="12" column="37" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/coaxmons.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="23" column="45" selection-start-line="23" selection-start-column="45" selection-end-line="23" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+            <marker date="1576058287838" expanded="true" signature="78:1569" placeholder="..." />
+            <marker date="1576058287838" expanded="true" signature="145:355" placeholder="..." />
+            <marker date="1576058287838" expanded="true" signature="398:1569" placeholder="..." />
+            <marker date="1576058287838" expanded="true" signature="1588:2789" placeholder="..." />
+            <marker date="1576058287838" expanded="true" signature="1648:1795" placeholder="..." />
+            <marker date="1576058287838" expanded="true" signature="1862:2434" placeholder="..." />
+            <marker date="1576058287838" expanded="true" signature="2499:2789" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/design_coaxmons.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
@@ -418,6 +442,13 @@
           <caret line="23" column="45" selection-start-line="23" selection-start-column="45" selection-end-line="23" selection-end-column="45" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
+            <marker date="1576058287838" expanded="true" signature="78:1569" placeholder="..." />
+            <marker date="1576058287838" expanded="true" signature="145:355" placeholder="..." />
+            <marker date="1576058287838" expanded="true" signature="398:1569" placeholder="..." />
+            <marker date="1576058287838" expanded="true" signature="1588:2789" placeholder="..." />
+            <marker date="1576058287838" expanded="true" signature="1648:1795" placeholder="..." />
+            <marker date="1576058287838" expanded="true" signature="1862:2434" placeholder="..." />
+            <marker date="1576058287838" expanded="true" signature="2499:2789" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -448,6 +479,13 @@
           <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
+            <marker date="1576058287838" expanded="true" signature="78:1569" placeholder="..." />
+            <marker date="1576058287838" expanded="true" signature="145:355" placeholder="..." />
+            <marker date="1576058287838" expanded="true" signature="398:1569" placeholder="..." />
+            <marker date="1576058287838" expanded="true" signature="1588:2789" placeholder="..." />
+            <marker date="1576058287838" expanded="true" signature="1648:1795" placeholder="..." />
+            <marker date="1576058287838" expanded="true" signature="1862:2434" placeholder="..." />
+            <marker date="1576058287838" expanded="true" signature="2499:2789" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -469,16 +507,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resonator_coaxmon.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="37" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/airbridges.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.1711146">
@@ -489,19 +517,16 @@
     <entry file="file://$PROJECT_DIR$/coaxmons.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="23" column="45" selection-start-line="23" selection-start-column="45" selection-end-line="23" selection-end-column="45" />
+          <caret line="22" column="45" selection-start-line="22" selection-start-column="45" selection-end-line="22" selection-end-column="45" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/designTL.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
+            <marker date="1576058287838" expanded="true" signature="78:1569" placeholder="..." />
+            <marker date="1576058287838" expanded="true" signature="145:355" placeholder="..." />
+            <marker date="1576058287838" expanded="true" signature="398:1569" placeholder="..." />
+            <marker date="1576058287838" expanded="true" signature="1588:2789" placeholder="..." />
+            <marker date="1576058287838" expanded="true" signature="1648:1795" placeholder="..." />
+            <marker date="1576058287838" expanded="true" signature="1862:2434" placeholder="..." />
+            <marker date="1576058287838" expanded="true" signature="2499:2789" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -534,6 +559,36 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/loops_and_JJs2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#12#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resonator_coaxmon.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.017254902">
+          <caret line="11" column="34" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/designTL.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/design_coaxmons.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -546,8 +601,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/loops_and_JJs_coaxmons.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.79434854">
-          <caret line="70" column="120" selection-start-line="70" selection-start-column="120" selection-end-line="70" selection-end-column="120" />
+        <state vertical-scroll-proportion="0.4489796">
+          <caret line="26" column="156" selection-start-line="26" selection-start-column="156" selection-end-line="26" selection-end-column="156" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
           </folding>
