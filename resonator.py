@@ -12,6 +12,7 @@ class Resonator:
 		self.x2 = x2
 		self.frequency = frequency
 		self.length = 299792458/(4*frequency)*1e6
+		print(self.length)
 		self.d = d
 		self.d1 = d1
 		self.d2 = d2

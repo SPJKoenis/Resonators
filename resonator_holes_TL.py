@@ -18,6 +18,7 @@ class Resonator:
 		self.y1 = y1
 		self.l_vert = l_vert
 		self.l_coupl = self.length/30 #the ratio between the coupling length and the total resonator length is constant
+		print('length:', self.length)
 		print('coupling length:', self.l_coupl)
 		print('w=', self.d)
 		print('s=', (self.d1-self.d)/2)
